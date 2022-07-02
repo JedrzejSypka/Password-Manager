@@ -1,6 +1,6 @@
 from cryptography.fernet import Fernet
 
-def load_key():
+def load_key():  ##Funkcja, która generuje klucz do dekodowania lub go generuje.
     try:
         file = open("key.key", "rb")
         key = file.read()
@@ -16,7 +16,7 @@ key = load_key()
 fer = Fernet(key)
 
 
-def view():
+def view():  ##Funkcja, która pozwala otowrzyc i zobaczyc ten plik z haslami.
     with open('password.txt', "r") as f:
         for line in f.readlines():
             data = (line.rstrip())
@@ -24,7 +24,7 @@ def view():
             print("User :", user, "Password:", fer.decrypt(passw.encode()).decode())
 
 
-def add():
+def add():    ##Funkcja, ktora pozwala dodac nowe haslo
     name = input("Account name: ")
     password = input("Password: ")
 
@@ -32,7 +32,7 @@ def add():
         f.write(name + "|" + fer.encrypt(password.encode()).decode() + "\n")
 
 
-while True:
+while True:  
     mode = input("Do u wanna add a new password or view existing ones (view, add), or press 'q' to exit?").lower()
     if mode == "q":
         break
