@@ -1,8 +1,4 @@
-#from base64 import decode
-#from cgitb import text
-#unused imports ^
 from cryptography.fernet import Fernet
-
 
 def load_key():
     try:
